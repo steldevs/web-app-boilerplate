@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    container_name: postgresdb
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
+    ports: 
+        - "5432:5432"
+    profiles: ["dev", "docker"]
+
+  client:
+    build:
+      dockerfile: Dockerfile
+      context: "./frontend/web-app-boilerplate" 
+    ports: 
+      - "8080:80"
+    profiles: ["docker"]
+
+
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: "./backend/WebAppBoilerplate/" 
+    environment:
+      - SQL_HOST=postgresdb
+    depends_on:
+      - db
+    ports: 
+      - "5073:80"
+    profiles: ["docker"]
