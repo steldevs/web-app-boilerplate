@@ -13,7 +13,7 @@ const user = useGetAuthenticatedUser();
 
 const [selectedUser, setSelectedUser] = useState<User | null>(null);
   
-const [{ data, loading, error }, refetch] = useAxios<any>(
+const [{ data, loading }, refetch] = useAxios<User[]>(
     {
         url: buildUrl(`user`),
         method: 'GET',
@@ -21,7 +21,7 @@ const [{ data, loading, error }, refetch] = useAxios<any>(
     },
     { 
         manual: false
-    },
+    }
 );
 
     if(!loading && data){
@@ -37,7 +37,7 @@ const [{ data, loading, error }, refetch] = useAxios<any>(
             </>
         );
     }else{
-        return <></>;
+        return null;
     }
 
 

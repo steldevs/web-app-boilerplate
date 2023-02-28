@@ -1,13 +1,13 @@
 
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from "@mui/material";
-import { Controller } from "react-hook-form";
+import { FormControl, FormHelperText, InputLabel, Select } from "@mui/material";
+import { Control, Controller } from "react-hook-form";
 
 interface Props {
     name: string;
     label: string;
-    control: any;
+    control: Control<any>;
     defaultValue: string;
-    children: any;
+    children: React.ReactNode;
     helperText: string;
     error: boolean;
 }
