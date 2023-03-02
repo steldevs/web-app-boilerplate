@@ -56,5 +56,6 @@ This should run the database, frontend and backend. The frontend will be accessi
 Register a user and then use its credentials to login.
 
 ### Running for development
-After you've migrated the database navigate to the react app's directory and run `npm install` to install the required packages.
+After you've migrated the database navigate to the react app's directory and run `npm install` to install the required packages. Run `npm run` to start and publish the dev build server.
+
 Then open the .net solution file in Visual Studio and build & run from there. The frontend will be accessible at `localhost:3000` when running in dev mode.
