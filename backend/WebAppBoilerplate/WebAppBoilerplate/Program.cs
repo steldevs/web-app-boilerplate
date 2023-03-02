@@ -46,24 +46,16 @@ builder.Services.AddAuthentication(i =>
 
         return Task.CompletedTask;
     };
-}).AddCookie(options =>
-{
-    //options.Cookie.SameSite = SameSiteMode.None;
-    //options.Cookie.SecurePolicy = CookieSecurePolicy.None;
-    //options.Cookie.IsEssential = true;
 });
 
-//builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -73,18 +65,13 @@ if (app.Environment.IsDevelopment())
 app.UseCors(options => options
     .AllowAnyMethod()
     .AllowCredentials()
-    //.WithHeaders("Origin", "X-Requested-With", "Content-Type", "Accept")
-    //.WithExposedHeaders("set-cookie")
     .AllowAnyHeader()
     .WithOrigins("http://localhost:3000", "http://localhost:8080")
 );
 
-//app.UseMiddleware<CookieTokenMiddleware>();
-//app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
-
 
 app.Run();
